@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
+
         lifecycleScope.launch(Dispatchers.IO) {
             val users = apiService.getUsers()
             list.addAll(users)
@@ -38,9 +39,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
     companion object {
-        val EXTRA_ID ="extra_id"
+       const val EXTRA_ID ="extra_id"
     }
 
 }

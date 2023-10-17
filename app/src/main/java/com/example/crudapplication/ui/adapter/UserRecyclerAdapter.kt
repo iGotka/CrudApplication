@@ -16,6 +16,7 @@ class UserRecyclerAdapter  (
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val textViewTitle = itemView.findViewById<TextView>(R.id.textViewTitle)
         val textViewBody = itemView.findViewById<TextView>(R.id.textViewBody)
+
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView = LayoutInflater.from(parent.context)

@@ -22,17 +22,14 @@ class MainRecyclerAdapter (
             }
         }
     }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView = LayoutInflater.from(parent.context)
             .inflate(R.layout.user_list_item, parent, false)
         return ViewHolder(itemView)
     }
-
     override fun getItemCount(): Int {
         return list.size
     }
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.textViewName.text = list[position].name
         holder.textViewEmail.text = list[position].email

@@ -1,6 +1,8 @@
 package com.example.crudapplication.ui.activity
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -43,10 +45,8 @@ class UserActivity : AppCompatActivity(){
         //формирование списка статей
         val list = mutableListOf<Post>()
         val adapter = UserRecyclerAdapter(list)
-        val postRecycler =
-            findViewById<RecyclerView>(R.id.postRecyclerView)
-        postRecycler.layoutManager =
-            LinearLayoutManager(this)
+        val postRecycler = findViewById<RecyclerView>(R.id.postRecyclerView)
+        postRecycler.layoutManager = LinearLayoutManager(this)
         postRecycler.adapter = adapter
         lifecycleScope.launch(Dispatchers.IO) {
             val posts = apiPostService.getPostsByUserId(id)
@@ -54,6 +54,12 @@ class UserActivity : AppCompatActivity(){
             withContext(Dispatchers.Main) {
                 adapter.notifyDataSetChanged()
             }
+        }
+        val buttonAdd = findViewById<Button>(R.id.addPostButton)
+        buttonAdd.setOnClickListener{
+            val intent = Intent(this,AddPostActivity::class.java)
+            intent.putExtra("id",id);
+            startActivity(intent)
         }
     }
 }
